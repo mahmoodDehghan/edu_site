@@ -12,17 +12,18 @@ import 'package:serverpod_client/serverpod_client.dart' as _i1;
 import 'dart:async' as _i2;
 import 'protocol.dart' as _i3;
 
+///With this Service you can get running server version.
 /// {@category Endpoint}
-class EndpointExample extends _i1.EndpointRef {
-  EndpointExample(_i1.EndpointCaller caller) : super(caller);
+class EndpointVersion extends _i1.EndpointRef {
+  EndpointVersion(_i1.EndpointCaller caller) : super(caller);
 
   @override
-  String get name => 'example';
+  String get name => 'version';
 
-  _i2.Future<String> hello(String name) => caller.callServerEndpoint<String>(
-        'example',
-        'hello',
-        {'name': name},
+  _i2.Future<String> getVersion() => caller.callServerEndpoint<String>(
+        'version',
+        'getVersion',
+        {},
       );
 }
 
@@ -41,13 +42,13 @@ class Client extends _i1.ServerpodClient {
           streamingConnectionTimeout: streamingConnectionTimeout,
           connectionTimeout: connectionTimeout,
         ) {
-    example = EndpointExample(this);
+    version = EndpointVersion(this);
   }
 
-  late final EndpointExample example;
+  late final EndpointVersion version;
 
   @override
-  Map<String, _i1.EndpointRef> get endpointRefLookup => {'example': example};
+  Map<String, _i1.EndpointRef> get endpointRefLookup => {'version': version};
 
   @override
   Map<String, _i1.ModuleEndpointCaller> get moduleLookup => {};

@@ -2,11 +2,11 @@ import 'package:edu_site_client/edu_site_client.dart';
 import 'package:flutter/material.dart';
 import 'package:serverpod_flutter/serverpod_flutter.dart';
 
-// Sets up a singleton client object that can be used to talk to the server from
-// anywhere in our app. The client is generated from your server code.
-// The client is set up to connect to a Serverpod running on a local server on
-// the default port. You will need to modify this to connect to staging or
-// production servers.
+/// Sets up a singleton client object that can be used to talk to the server from
+/// anywhere in our app. The client is generated from your server code.
+/// The client is set up to connect to a Serverpod running on a local server on
+/// the default port. You will need to modify this to connect to staging or
+/// production servers.
 var client = Client('http://$localhost:8080/')
   ..connectivityMonitor = FlutterConnectivityMonitor();
 
@@ -20,11 +20,11 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
-      title: 'Serverpod Demo',
+      title: 'Sample Demo',
       theme: ThemeData(
         primarySwatch: Colors.blue,
       ),
-      home: const MyHomePage(title: 'Serverpod Example'),
+      home: const MyHomePage(title: 'Sample Example'),
     );
   }
 }
@@ -44,14 +44,12 @@ class MyHomePageState extends State<MyHomePage> {
   String? _resultMessage;
   String? _errorMessage;
 
-  final _textEditingController = TextEditingController();
-
   // Calls the `hello` method of the `example` endpoint. Will set either the
   // `_resultMessage` or `_errorMessage` field, depending on if the call
   // is successful.
-  void _callHello() async {
+  void _getServerVersion() async {
     try {
-      final result = await client.example.hello(_textEditingController.text);
+      final result = await client.version.getVersion();
       setState(() {
         _errorMessage = null;
         _resultMessage = result;
@@ -75,18 +73,9 @@ class MyHomePageState extends State<MyHomePage> {
           children: [
             Padding(
               padding: const EdgeInsets.only(bottom: 16.0),
-              child: TextField(
-                controller: _textEditingController,
-                decoration: const InputDecoration(
-                  hintText: 'Enter your name',
-                ),
-              ),
-            ),
-            Padding(
-              padding: const EdgeInsets.only(bottom: 16.0),
               child: ElevatedButton(
-                onPressed: _callHello,
-                child: const Text('Send to Server'),
+                onPressed: _getServerVersion,
+                child: const Text('Get Server Version'),
               ),
             ),
             _ResultDisplay(

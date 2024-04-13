@@ -1,6 +1,6 @@
 name: edu_site_server
 description: Starting point for a Serverpod server.
-# version: 1.0.0
+version: 0.0.1
 # homepage: https://www.example.com
 
 environment:
@@ -8,6 +8,7 @@ environment:
 
 dependencies:
   serverpod: 1.2.6
+  pubspec_yaml: ^3.1.0
 
 dev_dependencies:
   lints: ^3.0.0
