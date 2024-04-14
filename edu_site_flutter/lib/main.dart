@@ -1,4 +1,5 @@
 import 'package:edu_site_client/edu_site_client.dart';
+import 'package:edu_site_flutter/page/upload_photo.dart';
 import 'package:flutter/material.dart';
 import 'package:serverpod_flutter/serverpod_flutter.dart';
 
@@ -20,12 +21,13 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
-      title: 'Sample Demo',
-      theme: ThemeData(
-        primarySwatch: Colors.blue,
-      ),
-      home: const MyHomePage(title: 'Sample Example'),
-    );
+        title: 'Sample Demo',
+        theme: ThemeData(
+          primarySwatch: Colors.blue,
+        ),
+        home: const UploadPhoto()
+        // const MyHomePage(title: 'Sample Example'),
+        );
   }
 }
 

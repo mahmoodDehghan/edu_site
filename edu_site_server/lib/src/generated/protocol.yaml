@@ -1,2 +1,8 @@
+photos:
+  - getPhotosUploadDescription:
+  - verifyPhotoUploaded:
+  - isPublicPhotoExist:
+  - getPublicPhotoFile:
+  - getPublicPhotoUrl:
 version:
   - getVersion:

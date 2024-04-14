@@ -25,6 +25,7 @@ dependencies:
   flutter:
     sdk: flutter
   serverpod_flutter: 1.2.6
+  file_picker: ^8.0.0+1
   edu_site_client:
     path: ../edu_site_client
 
