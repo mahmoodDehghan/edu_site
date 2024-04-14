@@ -1,9 +1,5 @@
-import 'dart:async';
-import 'dart:html';
-import 'dart:io';
 import 'dart:typed_data';
 import 'package:flutter/foundation.dart';
-import 'package:http/http.dart' as http;
 
 import 'package:edu_site_client/edu_site_client.dart';
 import 'package:file_picker/file_picker.dart';
@@ -21,7 +17,6 @@ class UploadPhoto extends StatefulWidget {
 class _UploadPhotoState extends State<UploadPhoto> {
   final _textController = TextEditingController();
   String? _fileName;
-  int? _fileLength;
   String? _uploaded;
   ByteData? _fileBytes;
   bool _filePicked = false;
@@ -111,7 +106,6 @@ class _UploadPhotoState extends State<UploadPhoto> {
                               _fileBytes =
                                   result.files.first.bytes!.buffer.asByteData();
                               _fileName = result.files.first.name;
-                              _fileLength = result.files.first.bytes!.length;
                               _filePicked = true;
                               _textController.text = _fileName!;
                             });
@@ -132,7 +126,6 @@ class _UploadPhotoState extends State<UploadPhoto> {
                         setState(() {
                           _fileName = null;
                           _fileBytes = null;
-                          _fileLength = null;
                           _filePicked = false;
                           _message = "";
                           _textController.text = "";
